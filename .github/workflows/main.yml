@@ -1,0 +1,78 @@
+name: Build and deploy Python app to Azure Web App
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: 
+
+env:
+
+  REGISTRY_USERNAME : 'pythonapp10'
+  REGISTRY_PASSWORD : '2G4gUzkhNcrt29t1oORQKz0P9LtATqKMGismfcWc3j+ACRBAkOg1'
+  AZURELOGIN : '{"clientId": "998f1b04-7169-4feb-8a5f-d36b1c58ca0a", "clientSecret": "0V58Q~YiIEVPrugy2b.NBLaym4EWTeLoqtdcPckw", "subscriptionId": "458a5eb0-ae81-4711-9c6b-541c0bc2377c", "tenantId": "f56f54ef-dcb2-4559-93d5-422fb22b8499", "activeDirectoryEndpointUrl": "https://login.microsoftonline.com", "resourceManagerEndpointUrl": "https://management.azure.com/", "activeDirectoryGraphResourceId": "https://graph.windows.net/", "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/", "galleryEndpointUrl": "https://gallery.azure.com/", "managementEndpointUrl": "https://management.core.windows.net/" }'
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile -t my-image-name:pfa_webapp -t pfa_webapp:${{ github.sha }}
+        
+      - name: Docker login azure
+        uses: azure/docker-login@v1
+        with:
+          login-server: pythonapp10.azurecr.io
+          username: ${{ env.REGISTRY_USERNAME }}
+          password: ${{ env.REGISTRY_PASSWORD }}
+      - run: docker tag pfa_webapp:${{ github.sha }} pythonapp10.azurecr.io/pfa_webapp:${{ github.sha }}
+      - run: docker push pythonapp10.azurecr.io/pfa_webapp:${{ github.sha }}
+            
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: 'Login via Azure CLI'
+        uses: azure/login@v1
+        with:
+          creds: ${{ env.AZURELOGIN }}
+          
+      - name: Set Web App ACR authentication
+        uses: Azure/appservice-settings@v1
+        with:
+          app-name: 'pfa_webapp'
+          app-settings-json: |
+            [
+                {
+                    "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+                    "value": "${{ env.REGISTRY_PASSWORD }}",
+                    "slotSetting": false
+                },
+                {
+                 "name": "DOCKER_REGISTRY_SERVER_URL",
+                 "value": "pythonapp10.azurecr.io",
+                 "slotSetting": false
+                },
+                {
+                 "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+                 "value": "${{ env.REGISTRY_USERNAME  }}",
+                 "slotSetting": false
+                }
+            ]
+          
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'pfa_webapp'
+          images: 'pythonapp10.azurecr.io/pfa_webapp:${{ github.sha }}'
+          
+      - name: Azure logout
+        run: |
+          az logout
+          
