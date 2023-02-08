@@ -10,7 +10,7 @@ env:
 
   REGISTRY_USERNAME : 'pythonapp10'
   REGISTRY_PASSWORD : '2G4gUzkhNcrt29t1oORQKz0P9LtATqKMGismfcWc3j+ACRBAkOg1'
-  AZURELOGIN : '{"cloudName": "AzureCloud", "homeTenantId": "f56f54ef-dcb2-4559-93d5-422fb22b8499", "id": "458a5eb0-ae81-4711-9c6b-541c0bc2377c", "isDefault": true, "managedByTenants": [], "name": "Azure subscription 1", "state": "Enabled", "tenantId": "f56f54ef-dcb2-4559-93d5-422fb22b8499", "user": { "name": "jamylguimaraes@hotmail.com", "type": "user" } }'
+  AZURELOGIN : '[{ "cloudName": "AzureCloud", "homeTenantId": "f56f54ef-dcb2-4559-93d5-422fb22b8499", "id": "458a5eb0-ae81-4711-9c6b-541c0bc2377c", "isDefault": true, "managedByTenants": [], "name": "Azure subscription 1", "state": "Enabled", "tenantId": "f56f54ef-dcb2-4559-93d5-422fb22b8499", "user": { "name": "jamylguimaraes@hotmail.com", "type": "user" } }]'
   
 jobs:
   build:
