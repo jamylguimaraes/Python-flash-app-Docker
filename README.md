@@ -1,5 +1,5 @@
 # Python-flash-app-Docker
-Aplicação Web Dockenizada, escrita em Python3 / Flask, utiliza o Gunicorn como Python Web Server.
+Aplicação Web Dockenizada, escrita em Python3 / Flask, utiliza Gunicorn como Web Server, CI-CD (Github Actions), Azure Web App, Azure Container Registry e IaC Terraform.
 
 
 
