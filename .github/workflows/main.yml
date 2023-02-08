@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the Docker image
-        run: docker build . --file Dockerfile -t my-image-name:pfa_webapp -t pfa_webapp:${{ github.sha }}
+        run: docker build . --file Dockerfile -t my-image-name:xwebapp -t xwebapp:${{ github.sha }}
         
       - name: Docker login azure
         uses: azure/docker-login@v1
@@ -27,8 +27,8 @@ jobs:
           login-server: pythonapp10.azurecr.io
           username: ${{ env.REGISTRY_USERNAME }}
           password: ${{ env.REGISTRY_PASSWORD }}
-      - run: docker tag pfa_webapp:${{ github.sha }} pythonapp10.azurecr.io/pfa_webapp:${{ github.sha }}
-      - run: docker push pythonapp10.azurecr.io/pfa_webapp:${{ github.sha }}
+      - run: docker tag xwebapp:${{ github.sha }} pythonapp10.azurecr.io/xwebapp:${{ github.sha }}
+      - run: docker push pythonapp10.azurecr.io/xwebapp:${{ github.sha }}
             
   deploy:
     runs-on: ubuntu-latest
@@ -46,7 +46,7 @@ jobs:
       - name: Set Web App ACR authentication
         uses: Azure/appservice-settings@v1
         with:
-          app-name: 'pfa_webapp'
+          app-name: 'xwebapp'
           app-settings-json: |
             [
                 {
@@ -69,8 +69,8 @@ jobs:
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'pfa_webapp'
-          images: 'pythonapp10.azurecr.io/pfa_webapp:${{ github.sha }}'
+          app-name: 'xwebapp'
+          images: 'pythonapp10.azurecr.io/xwebapp:${{ github.sha }}'
           
       - name: Azure logout
         run: |
