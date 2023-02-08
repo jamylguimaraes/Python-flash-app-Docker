@@ -17,7 +17,6 @@ Aplicação Web Dockenizada, escrita em Python3 / Flask, utiliza Gunicorn como W
 https://xwebapp.azurewebsites.net/
 ```
 
-
 ## Stack Utilizada:
 * __Python 3__
 * __Flask__
