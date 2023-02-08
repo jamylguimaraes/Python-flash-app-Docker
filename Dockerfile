@@ -1,9 +1,7 @@
 FROM python:3.8-slim-buster
 
-COPY app/ app/
-COPY app/templates app/templates/
-COPY app/static/js app/static/js/
-COPY app/static/css app/static/css/
+COPY app/ /app/
+RUN ls -la /app/*
 COPY gunicorn.sh app/
 WORKDIR app/
 RUN pip3 install -r requirements.txt
