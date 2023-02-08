@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the Docker image
-        run: docker build . --file Dockerfile -t my-image-name:pfa_webapp -t pfa_webapp:${{ github.sha }}
+        run: docker build . --file Dockerfile -t my-image-name:pfa_webapp:${{ github.sha }} -t pfa_webapp:${{ github.sha }}
         
       - name: Docker login azure
         uses: azure/docker-login@v1
