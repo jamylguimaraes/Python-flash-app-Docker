@@ -5,6 +5,7 @@ Aplicação Web Dockenizada, escrita em Python3 / Flask, utiliza o Gunicorn como
 
 ## ToDo:
 
+
 * ~~Criar esteira ci-cd no github~~ - Feito
 * ~~Criar Build (Docker)~~ - Feito
 * ~~Criar Deploy (Azure Web App)~~ - Feito
