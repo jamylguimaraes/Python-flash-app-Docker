@@ -10,7 +10,7 @@ env:
 
   REGISTRY_USERNAME : 'pythonapp10'
   REGISTRY_PASSWORD : '2G4gUzkhNcrt29t1oORQKz0P9LtATqKMGismfcWc3j+ACRBAkOg1'
-  AZURELOGIN : '[{ "cloudName": "AzureCloud", "homeTenantId": "f56f54ef-dcb2-4559-93d5-422fb22b8499", "id": "458a5eb0-ae81-4711-9c6b-541c0bc2377c", "isDefault": true, "managedByTenants": [], "name": "Azure subscription 1", "state": "Enabled", "tenantId": "f56f54ef-dcb2-4559-93d5-422fb22b8499", "user": { "name": "jamylguimaraes@hotmail.com", "type": "user" } }]'
+  AZURELOGIN : '{ "clientId": "1bbfc3c1-c316-4582-8301-d80ef537fa87", "clientSecret": "8Ey8Q~.N4ErCHkjL.HnEAMrHpGFJYCqWmJQM~dr2", "subscriptionId": "458a5eb0-ae81-4711-9c6b-541c0bc2377c", "tenantId": "f56f54ef-dcb2-4559-93d5-422fb22b8499", "activeDirectoryEndpointUrl": "https://login.microsoftonline.com", "resourceManagerEndpointUrl": "https://management.azure.com/", "activeDirectoryGraphResourceId": "https://graph.windows.net/", "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/", "galleryEndpointUrl": "https://gallery.azure.com/", "managementEndpointUrl": "https://management.core.windows.net/" }'
   
 jobs:
   build:
