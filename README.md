@@ -21,12 +21,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-        #Realiza checkout no repositorio remoto
+        # Realiza checkout no repositorio remoto
       - uses: actions/checkout@v2
 
         # Cria uma imagem docker
       - name: Build the Docker image
         run: docker build . --file Dockerfile -t my-image-name:xwebapp -t xwebapp:${{ github.sha }}
+        
         # Realiza login no Azure Container registry - ACR
       - name: ACR login azure
         uses: azure/docker-login@v1
@@ -34,8 +35,10 @@ jobs:
           login-server: pythonapp10.azurecr.io
           username: ${{ env.REGISTRY_USERNAME }}
           password: ${{ env.REGISTRY_PASSWORD }}       
+          
         # Renomeia a tag para o formato do ACR
       - run: docker tag xwebapp:${{ github.sha }} pythonapp10.azurecr.io/xwebapp:${{ github.sha }}
+      
         # Envia a imagem para o ACR
       - run: docker push pythonapp10.azurecr.io/xwebapp:${{ github.sha }}
 
@@ -48,7 +51,7 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-        Realiza login no Azure Container registry - ACR
+        # Realiza login no Azure Container registry - ACR
       - name: 'Login via Azure CLI'
         uses: azure/login@v1
         with:
@@ -88,13 +91,12 @@ jobs:
       - name: Azure logout
         run: |
           az logout
+          
 ```
 ## Disponível em:
-
 ```python
 https://xwebapp.azurewebsites.net/
 ```
-
 
 ## Stack Utilizada:
 * __Python 3__
