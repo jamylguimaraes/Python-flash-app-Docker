@@ -112,7 +112,7 @@ https://xwebapp.azurewebsites.net/
 * __Flask__
 * __Docker__
 * __Gunicorn__
-* __Github Actions__
+* ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 * __Azure Web App__
 * __Azure Container Registry__
 * __Terraform__
