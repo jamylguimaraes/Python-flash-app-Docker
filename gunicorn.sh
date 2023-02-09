@@ -1,2 +1,2 @@
 #!/bin/sh
-gunicorn --bind=0.0.0.0:8000 --timeout 600 --log-level debug app
+gunicorn --bind=0.0.0.0 --timeout 600 --log-level debug app
