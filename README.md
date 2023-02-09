@@ -92,6 +92,7 @@ jobs:
         run: |
           az logout
 
+```
 
 ## Disponível em:
 
