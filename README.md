@@ -91,12 +91,20 @@ jobs:
       - name: Azure logout
         run: |
           az logout
-          
-```
+
+
 ## Disponível em:
+
 ```python
 https://xwebapp.azurewebsites.net/
 ```
+
+## Algumas metricas da App  
+
+![App Metric 1](https://github.com/jamylguimaraes/Python-flask-app-Docker/blob/main/screenshots/metrica_data_in_out.png?raw=true)
+
+![App Metric 2](https://github.com/jamylguimaraes/Python-flask-app-Docker/blob/main/screenshots/metrica_response_request.png?raw=true)
+
 
 ## Stack Utilizada:
 * __Python 3__
