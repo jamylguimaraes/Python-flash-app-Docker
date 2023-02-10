@@ -94,7 +94,7 @@ jobs:
 
 ```
 
-## Disponível em (Plano Free da Azure) 
+## Disponível em (Plano Free-F1 da Azure) 
 ### A aplicação demora um pouca a responder:
 
 ```python
