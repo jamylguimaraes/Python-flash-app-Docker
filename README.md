@@ -94,7 +94,7 @@ jobs:
 
 ```
 
-## Disponível em:
+## Disponível em (Plano Free da Azure) a aplicação demora um pouca a responder:
 
 ```python
 https://xwebapp.azurewebsites.net/
